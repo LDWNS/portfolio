@@ -1,7 +1,7 @@
 :root {
   --bg: #000;
   --primary: #efefef;
-  --accent: #ff5e5e;
+  --accent: #f86b6b;
 
   --standard-unit: 16px;
 
@@ -20,7 +20,7 @@
 html {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-family: "Courier New", Tahoma,"Verdana", "Arial", sans-serif;
-  line-height: 1.8;
+  line-height: 1.8;css
   scroll-behavior: smooth;
 }
 
@@ -39,6 +39,13 @@ h2 {
   width: 1px;
   overflow: hidden;
 }
+a:hover 
+.visually-hidden {
+  display: unset;
+  heigth: unset;
+  width: unset;
+  overflow: unset;
+}
 p {
   max-width: 650px;
 }
@@ -52,14 +59,15 @@ section {
   margin-bottom: 60vh;
   max-width: 40rem;
   margin-inline: auto;
-  overflow: hidden;
 }
 section:first-of-type {
   padding-inline: unset;
 }
 .red {
   color: var(--accent);
-  font-size: 14px;
+  font-size: .9rem;
+  font-weight: bold;
+  letter-spacing: 0.13rem;
 }
 .grid {
   display: grid;
@@ -128,6 +136,9 @@ ul {
   gap: var(--gap-sm);
 }
 a {
+  animation: 200ms ease-in-out;
+  display: inline-flex;
+  flex-direction: column;
   color: var(--primary);
 }
 
@@ -182,7 +193,7 @@ a {
   justify-content: center;
 }
 .project p {
-  max-width: 10rem;
+  //max-width: 10rem;
 }
 .project img[data-ai="true"] {
   border: solid var(--primary) 1px;
@@ -250,6 +261,9 @@ a {
   right:18%;
 }
 
+div ul {
+    list-style: disc;
+}
 
 #design > div ul {
   list-style: disc;
