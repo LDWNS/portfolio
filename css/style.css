@@ -33,7 +33,7 @@ body {
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .visually-hidden {
@@ -238,7 +238,7 @@ a[href*="scroll-down-arrow"] {
 	margin-bottom: 0;
 }
 
-#design > *:not(h2,nav) {
+#design > *:not(h1,nav) {
   margin-bottom: 40vh;
 }
 
@@ -293,11 +293,8 @@ div ul ul {
 #design > section > div {
   text-align: center;
 }
-#design > section h4 {
-  font-size: var(--unit-lg);
-}
 #design > section > a {
-  font-size: var(--unit-xl);
+  font-size: 4rem;
   line-height: 1;
   text-decoration: none;
   position: relative;
