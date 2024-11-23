@@ -16,6 +16,9 @@
   --gap-md: var(--unit);
   --gap-lg: var(--unit-lg);
 }
+*, *:before, *:after {
+    box-sizing: border-box;
+}
 
 html {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -81,7 +84,7 @@ section:first-of-type {
 }
 .grid > img {
   padding: var(--gap-lg);
-  width: calc(var(--grid-col-1-width) - var(--unit-xl));
+  width: 100%;
   height: auto;
   border: 1px solid var(--primary);
 }
@@ -104,12 +107,7 @@ section:first-of-type {
   position: relative;
   width: 100%;
   text-align: right;
-}
-
-#smiling-face p span.red {
-  position: absolute;
-  bottom: 0;
-  right: var(--unit);
+  margin: 0;
 }
 
 nav {
@@ -142,8 +140,12 @@ a {
   color: var(--primary);
 }
 
+a[href*="scroll-down-arrow"] {
+   margin-top: 10vh;
+}
+
 #scroll-down-arrow {
-  margin-block: 10vh;
+    height: 2rem;
 }
 
 .soc-med-container {
@@ -177,14 +179,27 @@ a {
 }
 .project {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--unit);
   width: 100%;
   padding-bottom: 30vh;
 }
+@media(min-width: 500px) {
+    .project {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.project h4 {
+    margin: 0;
+}
 .project img {
-  width: clamp(12rem, 33vw, 20rem);
+  width: 100%;
   height: auto;
+}
+@media(min-width: 500px) {
+    .project img {
+        width: clamp(12rem, 33vw, 20rem);
+    }
 }
 .project div {
   display: flex;
@@ -192,14 +207,18 @@ a {
   align-items: start;
   justify-content: center;
 }
-.project p {
-  //max-width: 10rem;
-}
 .project img[data-ai="true"] {
   border: solid var(--primary) 1px;
   padding: var(--unit-lg);
-  width: calc(clamp(12rem, 33vw, 20rem) - var(--unit-lg) * 2);
+  width: 100%;
   height: auto;
+}
+#skills-container {
+}
+@media(min-width: 500px) {
+    #skills-container {
+        grid-column: span 2;
+    }
 }
 #skills {
   padding-bottom: 30vh;
@@ -210,6 +229,9 @@ a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+#skills li:first-child span {
+    width: 78px;
 }
 
 #design {
@@ -261,7 +283,7 @@ a {
   right:18%;
 }
 
-div ul {
+div ul ul {
     list-style: disc;
 }
 
@@ -279,6 +301,7 @@ div ul {
   line-height: 1;
   text-decoration: none;
   position: relative;
+  display: unset;
 }
 
 
