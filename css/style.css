@@ -189,7 +189,7 @@ a[href*="scroll-down-arrow"] {
         grid-template-columns: 1fr 1fr;
     }
 }
-.project h4 {
+.project h3 {
     margin: 0;
 }
 .project img {
