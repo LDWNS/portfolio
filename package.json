@@ -1,0 +1,31 @@
+{
+  "name": "portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.7",
+    "@astrojs/internal-helpers": "0.8.0",
+    "@astrojs/ts-plugin": "^1.10.7",
+    "astro": "^6.0.4",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.0",
+    "eslint": "^10.0.3",
+    "eslint-plugin-astro": "^1.6.0",
+    "tailwindcss": "^4.0.0"
+  },
+  "packageManager": "pnpm@11.0.0-dev.1005+sha512.91f84a392eea348ea4852a182912d2520273a4336f933b78cc44bc931eb999923c097e9433a9b355adc1f725725ea99082fc9f032a559df832632e764c92c798",
+  "pnpm": {
+    "overrides": {
+      "@astrojs/internal-helpers": "0.8.0"
+    }
+  }
+}

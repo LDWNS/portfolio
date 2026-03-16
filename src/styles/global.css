@@ -1,0 +1,505 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #000000;
+  --color-primary: #efefef;
+  --color-accent: #ff5e5e;
+  --color-code-bg: #1d2222;
+  --color-code-text: #ffffff;
+  --color-code-comment: #bbbbbb;
+  --color-code-cmd: #fa8b8b;
+  --color-code-arg: #ddbb22;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: sans-serif;
+    line-height: 1.8;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  p {
+    max-width: 650px;
+  }
+
+  a {
+    transition: all 200ms ease-in-out;
+    display: inline-flex;
+    flex-direction: column;
+    color: var(--color-primary);
+  }
+}
+
+@layer components {
+  .visually-hidden {
+    display: block;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
+  a:hover .visually-hidden {
+    display: unset;
+    height: unset;
+    width: unset;
+    overflow: unset;
+  }
+
+  .red {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 0.13rem;
+  }
+
+  /* Layout */
+  header,
+  section,
+  article {
+    display: flex;
+    padding-inline: 1rem;
+    flex-direction: column;
+    margin-inline: auto;
+    max-width: 40rem;
+  }
+  header#home,
+  section.home {
+    margin-bottom: 60vh;
+    align-items: center;
+    justify-content: center;
+  }
+  section.home:first-of-type {
+    padding-inline: unset;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    --grid-col-1-width: min(48vw, 20rem);
+    --grid-col-2-width: min(52vw, 20rem);
+    grid-template-columns: var(--grid-col-1-width) var(--grid-col-2-width);
+  }
+  .grid > * {
+    padding: 1rem;
+  }
+  .grid > img {
+    padding: 2rem;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-primary);
+  }
+  .grid > :nth-child(2n) {
+    display: flex;
+    align-items: center;
+  }
+  .grid > :nth-child(2n-1) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #smiling-face > div {
+    position: relative;
+    flex-direction: column;
+  }
+  #smiling-face p {
+    position: relative;
+    width: 100%;
+    text-align: right;
+    margin: 0;
+  }
+
+  /* Navigation */
+  nav {
+    padding: 1rem;
+    border: 1px solid var(--color-primary);
+
+    ul {
+      li.active {
+        list-style: disclosure-closed;
+
+        &::marker {
+          color: var(--color-accent);
+        }
+      }
+    }
+
+    &.secondary-menu {
+      width: min(calc(100% - 2rem), 28rem);
+    }
+    &.secondary-menu ul {
+      padding-left: calc(1rem + 0.5rem);
+    }
+  }
+  nav > h3 {
+    margin-block: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  a[href*="scroll-down-arrow"] {
+    margin-top: 10vh;
+  }
+  #scroll-down-arrow {
+    height: 2rem;
+  }
+
+  /* Social media contact section */
+  .soc-med-container {
+    position: relative;
+    width: min(100%, 40rem);
+    margin-top: 4rem;
+  }
+  .soc-med-container > img {
+    height: auto;
+    width: min(100%, 40rem);
+  }
+  .soc-med-container > a {
+    position: absolute;
+  }
+  .soc-med-container > a:nth-of-type(1) {
+    left: 65%;
+    top: 3%;
+  }
+  .soc-med-container > a:nth-of-type(2) {
+    left: 45%;
+    top: 22%;
+  }
+  .soc-med-container > a > img {
+    height: 25px;
+    width: 25px;
+  }
+  .soc-med-container > a:nth-of-type(3) {
+    left: 72%;
+    top: 48%;
+  }
+
+  /* Projects */
+  .project {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    padding-bottom: 30vh;
+  }
+  @media (min-width: 500px) {
+    .project {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .project h3 {
+    margin: 0;
+  }
+  .project img {
+    width: 100%;
+    height: auto;
+  }
+  @media (min-width: 500px) {
+    .project img {
+      width: clamp(12rem, 33vw, 20rem);
+    }
+  }
+  .project div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+  .project img[data-ai="true"] {
+    border: solid var(--color-primary) 1px;
+    padding: 2rem;
+    width: 100%;
+    height: auto;
+  }
+  @media (min-width: 500px) {
+    #skills-container {
+      grid-column: span 2;
+    }
+  }
+  #skills {
+    padding-bottom: 30vh;
+    width: 100%;
+  }
+  #skills li {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  #skills li:first-child span {
+    width: 78px;
+  }
+
+  /* Design section */
+  #design {
+    margin-bottom: 0;
+  }
+  #design > *:not(h1, nav) {
+    margin-bottom: 40vh;
+  }
+  #design > div:first-of-type {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #design > div:first-of-type span.red {
+    position: absolute;
+  }
+  #design > div:first-of-type span.red:first-of-type {
+    top: -10%;
+    right: 18%;
+  }
+  #design > div:first-of-type span.red:nth-of-type(2) {
+    top: 25%;
+    left: 16%;
+  }
+  #design > div:first-of-type span.red:nth-of-type(3) {
+    bottom: -6%;
+    right: 27%;
+  }
+  #design > div:nth-of-type(2) {
+    position: relative;
+    height: 30vh;
+    width: 100%;
+  }
+  #design > div:nth-of-type(2) span.red {
+    position: absolute;
+  }
+  #design > div:nth-of-type(2) span.red:first-of-type {
+    top: 0%;
+    left: 16%;
+  }
+  #design > div:nth-of-type(2) span.red:nth-of-type(2) {
+    bottom: 25%;
+    right: 18%;
+  }
+
+  div ul ul {
+    list-style: disc;
+  }
+  #design > div ul {
+    list-style: disc;
+  }
+  #design > section > div {
+    text-align: center;
+  }
+  #design > section > a {
+    font-size: 4rem;
+    line-height: 1;
+    text-decoration: none;
+    position: relative;
+    display: unset;
+  }
+  #design > section > a::after {
+    content: " ";
+    background: var(--color-primary);
+    height: 2px;
+    width: 97%;
+    display: block;
+    position: absolute;
+    left: 4px;
+    bottom: 0;
+  }
+  #design > section > a > svg {
+    position: relative;
+    padding-inline: 2px;
+  }
+
+  /* Blog */
+  .nav-link {
+    padding: 0.5rem 1rem 0;
+  }
+  .date {
+    color: var(--color-code-comment);
+  }
+
+  /* Inline code (outside pre) */
+  :not(pre) > code {
+    background-color: var(--color-code-bg);
+    color: var(--color-code-text); /* #fff on #1d2222 = 16.4:1 contrast ✓ */
+    font-family: "Courier New", monospace;
+    font-size: 0.875em;
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+  }
+
+  /* Legacy custom code-block element (portfolio home page) */
+  code-block {
+    font-family: "Courier New", monospace;
+    background-color: var(--color-code-bg);
+    color: var(--color-code-text);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem;
+    margin-block: 1rem;
+
+    code {
+      background: none;
+      padding: 0;
+      font-size: inherit;
+    }
+    .comment {
+      color: var(--color-code-comment); /* #bbb on #1d2222 = 9.8:1 ✓ */
+    }
+    .bash-cmd {
+      color: var(--color-code-cmd); /* #fa8b8b on #1d2222 = 5.9:1 ✓ */
+    }
+    .bash-arg {
+      color: var(--color-code-arg); /* #ddbb22 on #1d2222 = 5.0:1 ✓ */
+    }
+  }
+
+  /* Blog post prose — markdown rendered by Astro Content */
+  article.blog-post {
+    gap: 0;
+    padding-block: 2rem;
+
+    /* Restore heading hierarchy reset by Tailwind v4 preflight */
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-block: 0 1rem;
+      line-height: 1.2;
+    }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-block: 2rem 0.5rem;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-block: 1.5rem 0.25rem;
+    }
+
+    p {
+      margin-block: 0.75rem;
+    }
+
+    /* Shiki code blocks — theme provides token colors, we handle the container */
+    pre {
+      border-radius: 6px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-block: 1.25rem;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      /* Shiki sets background via inline style; add a subtle border for contrast
+         against our #000 page background */
+      outline: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+    }
+
+    /* Ordered / unordered lists in prose */
+    ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      margin-block: 0.75rem;
+    }
+    ol {
+      list-style: decimal;
+      padding-left: 1.5rem;
+      margin-block: 0.75rem;
+    }
+    li {
+      margin-block: 0.2rem;
+    }
+
+    /* Links */
+    a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      color: var(--color-primary);
+    }
+    a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Superscript footnote refs */
+    sup a {
+      text-decoration: none;
+      color: var(--color-accent);
+      font-size: 0.75em;
+    }
+
+    /* Footnotes rendered by remark */
+    .footnotes {
+      display: block;
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+      font-size: 0.875rem;
+
+      ol {
+        list-style: decimal;
+      }
+    }
+  }
+  #never {
+    position: absolute;
+    height: 0;
+    width: 0;
+  }
+
+  /* Rainbow hover effect on sections with <em> */
+  section:has(em) {
+    border: 1px solid var(--color-bg);
+  }
+  section:has(em):hover {
+    --gradient: linear-gradient(
+      to right,
+      hsl(0, 83%, 70%) 0%,
+      hsl(45, 83%, 70%) 14%,
+      hsl(90, 83%, 70%) 28%,
+      hsl(135, 83%, 70%) 42%,
+      hsl(180, 83%, 70%) 56%,
+      hsl(225, 83%, 70%) 70%,
+      hsl(270, 83%, 70%) 84%,
+      hsl(315, 83%, 70%) 100%
+    );
+    border-image: var(--gradient) 1;
+    border-width: 1px;
+    border-style: solid;
+
+    em {
+      font-weight: bold;
+      background: var(--gradient);
+      background-clip: text;
+      color: transparent;
+      scale: 1.1;
+    }
+  }
+
+  footer {
+    padding-inline: 1rem;
+    text-align: right;
+    justify-content: end;
+    display: flex;
+  }
+}
